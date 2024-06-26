@@ -24,9 +24,7 @@ class VideoListCell: UITableViewCell {
     private lazy var stackViewContent: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
-        view.spacing = 0
-        view.layer.cornerRadius = 8
-        view.clipsToBounds = true
+        view.spacing = 8
         view.translatesAutoresizingMaskIntoConstraints = false
         view.insetsLayoutMarginsFromSafeArea = false
         view.isLayoutMarginsRelativeArrangement = true
@@ -36,12 +34,93 @@ class VideoListCell: UITableViewCell {
     
     private lazy var imageViewThumb: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = UIColor(hexString: "#124076")?.withAlphaComponent(0.5) ?? .blue
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
-        imageView.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+        imageView.heightAnchor.constraint(equalToConstant: 184).isActive = true
         return imageView
     }()
+    
+    private lazy var durationBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray.withAlphaComponent(0.7)
+        view.layer.cornerRadius = 4
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var labelDuration: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.text = "15:00"
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var labelTitle: UILabel = {
+        let label = UILabel()
+        label.text = "Title Video"
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        return label
+    }()
+    
+    private lazy var stackViewInfo: UIStackView = {
+        let view = UIStackView()
+        view.axis = .horizontal
+        view.spacing = 4
+        return view
+    }()
+    
+    private lazy var labelAuthor: UILabel = {
+        let label = UILabel()
+        label.text = "Author Video"
+        label.textColor = .darkGray
+        label.font = .systemFont(ofSize: 10, weight: .regular)
+        return label
+    }()
+    
+    private lazy var labelViews: UILabel = {
+        let label = UILabel()
+        label.text = "510k views"
+        label.textColor = .darkGray
+        label.font = .systemFont(ofSize: 10, weight: .regular)
+        return label
+    }()
+    
+    private lazy var labelUpload: UILabel = {
+        let label = UILabel()
+        label.text = "2 months ago"
+        label.textColor = .darkGray
+        label.font = .systemFont(ofSize: 10, weight: .regular)
+        return label
+    }()
+    
+    private func getDot() -> UILabel {
+        let label = UILabel()
+        label.text = "•"
+        label.textColor = .darkGray
+        label.font = .systemFont(ofSize: 10, weight: .regular)
+        return label
+    }
+    
+    // MARK: - VARIABLE DECLARATION
+    var shimmeringAnimatedItems: [UIView] {
+            [
+                imageViewThumb,
+                labelDuration,
+                labelTitle,
+                labelAuthor,
+                labelUpload,
+                labelViews
+            ]
+        }
 
     // MARK: - INIT
     
@@ -64,10 +143,31 @@ class VideoListCell: UITableViewCell {
  
         NSLayoutConstraint.addSubviewAndCreateArroundEqualConstraint(in: containerView, toView: contentView)
         containerView.addArrangedSubview(stackViewContent)
-        stackViewContent.addArrangedSubview(imageViewThumb)
+        stackViewContent.addArrangedSubViews(views: [imageViewThumb, labelTitle, stackViewInfo])
+        stackViewInfo.addArrangedSubViews(views: [labelAuthor, getDot(), labelViews, getDot(), labelUpload, StackViewHelpers.getSpacerH()])
+        stackViewContent.setCustomSpacing(4, after: labelTitle)
+        
+        imageViewThumb.addSubview(durationBackgroundView)
+        durationBackgroundView.addSubview(labelDuration)
+        
+        NSLayoutConstraint.activate([
+            durationBackgroundView.trailingAnchor.constraint(equalTo: imageViewThumb.trailingAnchor, constant: -8),
+            durationBackgroundView.bottomAnchor.constraint(equalTo: imageViewThumb.bottomAnchor, constant: -8),
+            durationBackgroundView.widthAnchor.constraint(greaterThanOrEqualToConstant: 40),
+            durationBackgroundView.heightAnchor.constraint(equalToConstant: 20),
+            
+            labelDuration.centerXAnchor.constraint(equalTo: durationBackgroundView.centerXAnchor),
+            labelDuration.centerYAnchor.constraint(equalTo: durationBackgroundView.centerYAnchor),
+            labelDuration.leadingAnchor.constraint(equalTo: durationBackgroundView.leadingAnchor, constant: 4),
+            labelDuration.trailingAnchor.constraint(equalTo: durationBackgroundView.trailingAnchor, constant: -4)
+        ])
     }
     
     public func setData(video: Video) {
-//        imageViewThumb.image = 
+        imageViewThumb.afImage(video.thumbnailURL ?? "", placeholder: UIImage(named: "placeholder_video"))
+        labelTitle.text = video.title ?? ""
+        labelAuthor.text = video.author ?? ""
+        labelViews.text = video.views?.formattedStringToViewsCurrency() ?? ""
+        labelUpload.text = video.uploadTime ?? ""
     }
 }

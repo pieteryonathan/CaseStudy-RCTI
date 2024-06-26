@@ -47,13 +47,15 @@ class VideoListController: UIViewController {
         return view
     }()
     
-     public lazy var tableViewPromo: UITableView = {
+    public lazy var tableViewPromo: UITableView = {
         let view = UITableView()
         view.delegate = self
         view.backgroundColor = .white
         view.dataSource = self
+        view.showsVerticalScrollIndicator = false
         view.separatorStyle = .none
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.register(VideoListCell.self, forCellReuseIdentifier: "VideoListCell")
         view.register(EmptyStateCustom.self, forCellReuseIdentifier: "EmptyStateCustom")
         return view
     }()
@@ -62,6 +64,7 @@ class VideoListController: UIViewController {
     var isLoading = true { didSet {
         setStateLoading()
     }}
+    let presenter = VideoListPresenter()
     
     // MARK: - OVERRIDE
     
@@ -71,6 +74,8 @@ class VideoListController: UIViewController {
         isLoading = false
         view.backgroundColor = .white
         setupView()
+        presenter.view = self
+        presenter.refresh()
     }
     
     // MARK: - SETUP
@@ -97,12 +102,19 @@ extension VideoListController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func getVideoListCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableViewPromo.dequeueReusableCell(withIdentifier: "VideoListCell", for: indexPath) as! VideoListCell
+        cell.selectionStyle = .none
+        cell.setData(video: presenter.videos[indexPath.row])
+        return cell
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return presenter.videos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return getEmptyStateCell(indexPath)
+        return getVideoListCell(indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -115,5 +127,21 @@ extension VideoListController: UITableViewDataSource, UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
+    }
+}
+
+extension VideoListController: VideoListProtocol {
+    func showLoading() {
+        isLoading = true
+    }
+    
+    func showData() {
+        self.isLoading = false
+        tableViewPromo.reloadData()
+    }
+    
+    func showError(error: any Error) {
+        self.isLoading = false
+        print(error.localizedDescription)
     }
 }

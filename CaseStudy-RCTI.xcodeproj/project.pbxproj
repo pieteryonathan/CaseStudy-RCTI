@@ -30,6 +30,8 @@
 		97AE9D0A2C2C558F000A4B09 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9D092C2C558F000A4B09 /* Video.swift */; };
 		97AE9D0C2C2C5675000A4B09 /* VideoListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9D0B2C2C5675000A4B09 /* VideoListPresenter.swift */; };
 		97AE9D0E2C2C5695000A4B09 /* VideoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9D0D2C2C5695000A4B09 /* VideoListCell.swift */; };
+		97AE9D102C2C5DF8000A4B09 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9D0F2C2C5DF8000A4B09 /* UIImageViewExtension.swift */; };
+		97AE9D122C2C6A94000A4B09 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9D112C2C6A94000A4B09 /* StringExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		97AE9D092C2C558F000A4B09 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		97AE9D0B2C2C5675000A4B09 /* VideoListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListPresenter.swift; sourceTree = "<group>"; };
 		97AE9D0D2C2C5695000A4B09 /* VideoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCell.swift; sourceTree = "<group>"; };
+		97AE9D0F2C2C5DF8000A4B09 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		97AE9D112C2C6A94000A4B09 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		9A18739928203095C90C1048 /* Pods-CaseStudy-RCTI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaseStudy-RCTI.release.xcconfig"; path = "Target Support Files/Pods-CaseStudy-RCTI/Pods-CaseStudy-RCTI.release.xcconfig"; sourceTree = "<group>"; };
 		CE9819657F445FEF837B0A34 /* Pods-CaseStudy-RCTI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaseStudy-RCTI.debug.xcconfig"; path = "Target Support Files/Pods-CaseStudy-RCTI/Pods-CaseStudy-RCTI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +129,9 @@
 				97AE9CE52C2C4136000A4B09 /* UIApllicationExtensions.swift */,
 				97AE9CEF2C2C42A6000A4B09 /* UIColorExtension.swift */,
 				97AE9CF12C2C42B1000A4B09 /* UIViewExtensions.swift */,
+				97AE9D0F2C2C5DF8000A4B09 /* UIImageViewExtension.swift */,
 				97AE9CF32C2C42B6000A4B09 /* UIViewControllerExtensions.swift */,
+				97AE9D112C2C6A94000A4B09 /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -224,7 +230,6 @@
 				CE9819657F445FEF837B0A34 /* Pods-CaseStudy-RCTI.debug.xcconfig */,
 				9A18739928203095C90C1048 /* Pods-CaseStudy-RCTI.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -348,8 +353,10 @@
 				97AE9CF72C2C440E000A4B09 /* MainTabBarController.swift in Sources */,
 				97AE9CEA2C2C41B7000A4B09 /* Button.swift in Sources */,
 				97AE9CE22C2C40DE000A4B09 /* HomepageViewController.swift in Sources */,
+				97AE9D122C2C6A94000A4B09 /* StringExtensions.swift in Sources */,
 				97AE9D032C2C4A04000A4B09 /* StackViewHelpers.swift in Sources */,
 				97AE9CFD2C2C4977000A4B09 /* VideoListController.swift in Sources */,
+				97AE9D102C2C5DF8000A4B09 /* UIImageViewExtension.swift in Sources */,
 				97AE9CD22C2C3FBD000A4B09 /* ViewController.swift in Sources */,
 				97AE9CCE2C2C3FBD000A4B09 /* AppDelegate.swift in Sources */,
 				97AE9CF92C2C443F000A4B09 /* MainTabBarRCTIController.swift in Sources */,
@@ -507,6 +514,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 98QK38C4QU;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CaseStudy-RCTI/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -535,6 +543,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 98QK38C4QU;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CaseStudy-RCTI/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

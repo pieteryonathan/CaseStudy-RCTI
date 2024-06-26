@@ -1,8 +1,8 @@
 //
 //  UIViewControllerExtensions.swift
-//  CaseStudy-BNI
+//  CaseStudy-RCTI
 //
-//  Created by Pieter Yonathan on 13/06/24.
+//  Created by Pieter Yonathan on 26/06/24.
 //
 
 import Foundation

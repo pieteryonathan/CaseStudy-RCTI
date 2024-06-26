@@ -16,4 +16,11 @@ class StackViewHelpers {
         view.setContentHuggingPriority(.defaultLow, for: .horizontal)
         return view
     }
+    
+    static func getSpacerV() -> UIView {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.setContentHuggingPriority(.defaultLow, for: .vertical)
+        return view
+    }
 }

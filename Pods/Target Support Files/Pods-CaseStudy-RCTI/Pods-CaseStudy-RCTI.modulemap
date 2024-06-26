@@ -1,0 +1,6 @@
+framework module Pods_CaseStudy_RCTI {
+  umbrella header "Pods-CaseStudy-RCTI-umbrella.h"
+
+  export *
+  module * { export * }
+}

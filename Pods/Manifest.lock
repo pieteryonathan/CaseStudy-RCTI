@@ -2,20 +2,28 @@ PODS:
   - Alamofire (5.9.1)
   - AlamofireImage (4.3.0):
     - Alamofire (~> 5.8)
+  - FittedSheets (2.6.1)
+  - VersaPlayer (3.0.2)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - FittedSheets
+  - VersaPlayer
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - FittedSheets
+    - VersaPlayer
 
 SPEC CHECKSUMS:
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
   AlamofireImage: 843953fa97bee5f561cf05d83abd759e590b068d
+  FittedSheets: 37e35f105c531f3845075f1788dd8517a35315c4
+  VersaPlayer: 0e9a0ea7da786729ffb377dbd17b34641a8265e4
 
-PODFILE CHECKSUM: 98e37555e8d3fd269edba4507c1f8ccff6d36eef
+PODFILE CHECKSUM: db0edcbaa4627ea5751d042b079f3cc07507793b
 
 COCOAPODS: 1.15.2

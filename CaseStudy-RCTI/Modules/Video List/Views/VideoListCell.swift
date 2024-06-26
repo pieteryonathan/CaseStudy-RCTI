@@ -37,10 +37,29 @@ class VideoListCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = UIColor(hexString: "#124076")?.withAlphaComponent(0.5) ?? .blue
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
         imageView.heightAnchor.constraint(equalToConstant: 184).isActive = true
+        return imageView
+    }()
+    
+    private lazy var favBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white.withAlphaComponent(0.7)
+        view.layer.cornerRadius = 12
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        return view
+    }()
+    
+    private lazy var imageViewFav: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        imageView.image = UIImage(systemName: "heart")?.withTintColor(.red, renderingMode: .alwaysOriginal)
         return imageView
     }()
     
@@ -56,7 +75,7 @@ class VideoListCell: UITableViewCell {
     private lazy var labelDuration: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.font = .systemFont(ofSize: 10, weight: .regular)
         label.text = "15:00"
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -148,9 +167,18 @@ class VideoListCell: UITableViewCell {
         stackViewContent.setCustomSpacing(4, after: labelTitle)
         
         imageViewThumb.addSubview(durationBackgroundView)
+        imageViewThumb.addSubview(favBackgroundView)
+        favBackgroundView.addSubview(imageViewFav)
         durationBackgroundView.addSubview(labelDuration)
-        
+ 
         NSLayoutConstraint.activate([
+            
+            favBackgroundView.trailingAnchor.constraint(equalTo: imageViewThumb.trailingAnchor, constant: -8),
+            favBackgroundView.topAnchor.constraint(equalTo: imageViewThumb.topAnchor, constant: 8),
+            
+            imageViewFav.centerXAnchor.constraint(equalTo: favBackgroundView.centerXAnchor),
+            imageViewFav.centerYAnchor.constraint(equalTo: favBackgroundView.centerYAnchor),
+            
             durationBackgroundView.trailingAnchor.constraint(equalTo: imageViewThumb.trailingAnchor, constant: -8),
             durationBackgroundView.bottomAnchor.constraint(equalTo: imageViewThumb.bottomAnchor, constant: -8),
             durationBackgroundView.widthAnchor.constraint(greaterThanOrEqualToConstant: 40),

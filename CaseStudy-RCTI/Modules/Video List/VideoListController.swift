@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FittedSheets
 
 class VideoListController: UIViewController {
 
@@ -122,7 +123,8 @@ extension VideoListController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let controller = VideoPlayerController(video: presenter.videos[indexPath.row])
+        SheetViewController.show(controller, onParent: self, sizes: [.fullscreen])
     }
         
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

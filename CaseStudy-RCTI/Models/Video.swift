@@ -19,15 +19,22 @@ struct Video: Codable {
     let uploadTime: String?
     let views: String?
     let author: String?
-    let videoURL: String?
+    var videoURL: String?
     let description, subscriber: String?
     let isLive: Bool?
-
+    
     enum CodingKeys: String, CodingKey {
         case id, title
         case thumbnailURL = "thumbnailUrl"
         case duration, uploadTime, views, author
         case videoURL = "videoUrl"
         case description, subscriber, isLive
+    }
+    
+    mutating func convertHTTPToHTTPS() {
+        if var videoURL = self.videoURL, videoURL.lowercased().hasPrefix("http://") {
+            videoURL.replaceSubrange(videoURL.startIndex..<videoURL.index(videoURL.startIndex, offsetBy: 4), with: "https")
+            self.videoURL = videoURL
+        }
     }
 }

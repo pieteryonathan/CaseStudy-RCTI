@@ -7,5 +7,7 @@ target 'CaseStudy-RCTI' do
 
   pod 'Alamofire'
   pod 'AlamofireImage' 
-
+  pod 'VersaPlayer'
+  pod 'FittedSheets'
+  
 end

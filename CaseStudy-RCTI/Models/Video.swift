@@ -13,7 +13,7 @@ struct VideoResponse: Codable {
 }
 
 class Video: Object, Codable {
-    @Persisted var id: String?
+    @Persisted(primaryKey: true) var id: String?
     @Persisted var title: String?
     @Persisted var thumbnailURL: String?
     @Persisted var duration: String?
@@ -34,10 +34,16 @@ class Video: Object, Codable {
         case subscriber, isLive
     }
     
-    func convertHTTPToHTTPS() {
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    func getconvertHTTPToHTTPS() -> String {
         if var videoURL = self.videoURL, videoURL.lowercased().hasPrefix("http://") {
             videoURL.replaceSubrange(videoURL.startIndex..<videoURL.index(videoURL.startIndex, offsetBy: 4), with: "https")
-            self.videoURL = videoURL
+            return videoURL
+        } else {
+            return ""
         }
     }
 }

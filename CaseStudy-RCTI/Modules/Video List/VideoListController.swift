@@ -69,6 +69,12 @@ class VideoListController: UIViewController {
     
     // MARK: - OVERRIDE
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.refresh()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,7 +82,6 @@ class VideoListController: UIViewController {
         view.backgroundColor = .white
         setupView()
         presenter.view = self
-        presenter.refresh()
     }
     
     // MARK: - SETUP
@@ -105,10 +110,24 @@ extension VideoListController: UITableViewDataSource, UITableViewDelegate {
     
     func getVideoListCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewVideo.dequeueReusableCell(withIdentifier: "VideoListCell", for: indexPath) as! VideoListCell
+        let video = presenter.videos[indexPath.row]
         cell.selectionStyle = .none
-        cell.setData(video: presenter.videos[indexPath.row])
-        cell.onFavTapped = {[unowned self] in
-            
+        if presenter.checkIfVideoIsFavorited(video: video) {
+            cell.setToFav()
+            cell.onFavTapped = {[unowned self] in
+                presenter.removeFromFav(video: video)
+            }
+        } else {
+            cell.setToUnfav()
+            cell.onFavTapped = {[unowned self] in
+                presenter.addToFav(video: video)
+            }
+        }
+        cell.setData(video: video)
+        
+        cell.onThumbTapped = {[unowned self] in
+            let controller = VideoPlayerController(video: presenter.videos[indexPath.row])
+            SheetViewController.show(controller, onParent: self, sizes: [.fullscreen])
         }
         return cell
     }
@@ -127,9 +146,6 @@ extension VideoListController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        let controller = VideoPlayerController(video: presenter.videos[indexPath.row])
-//        SheetViewController.show(controller, onParent: self, sizes: [.fullscreen])
-        
     }
         
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

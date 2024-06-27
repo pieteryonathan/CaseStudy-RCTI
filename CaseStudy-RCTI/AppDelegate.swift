@@ -6,14 +6,36 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    
+    let migrationBlock: MigrationBlock = { migration, oldSchemaVersion in
+            if oldSchemaVersion < 1 {
+                // Perform necessary migration steps here
+                // Since we're adding a primary key, no specific migration steps are needed
+            }
+        }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        var config = Realm.Configuration(
+            schemaVersion: 1, // Increment the schema version whenever you make changes to the schema
+            migrationBlock: migrationBlock
+        )
+        
+        // Set this configuration as the default Realm configuration
+        Realm.Configuration.defaultConfiguration = config
+        
+        // Initialize Realm to trigger the migration
+        do {
+            _ = try Realm()
+        } catch {
+            print("Error initializing Realm: \(error)")
+        }
+        
         return true
     }
 

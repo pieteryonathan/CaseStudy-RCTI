@@ -7,9 +7,11 @@
 
 import Foundation
 import UIKit
+import RealmSwift
+import FittedSheets
 
 class FavoritListController: UIViewController {
-
+    
     private lazy var containerView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
@@ -47,11 +49,12 @@ class FavoritListController: UIViewController {
         return view
     }()
     
-     public lazy var tableViewFavorit: UITableView = {
+    public lazy var tableViewFavorit: UITableView = {
         let view = UITableView()
         view.delegate = self
         view.backgroundColor = .white
         view.dataSource = self
+        view.showsVerticalScrollIndicator = false
         view.separatorStyle = .none
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(EmptyStateCustom.self, forCellReuseIdentifier: "EmptyStateCustom")
@@ -63,8 +66,15 @@ class FavoritListController: UIViewController {
     var isLoading = true { didSet {
         setStateLoading()
     }}
+    let presenter = FavoritListPresenter()
     
     // MARK: - OVERRIDE
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.refresh()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +82,7 @@ class FavoritListController: UIViewController {
         isLoading = false
         view.backgroundColor = .white
         setupView()
+        presenter.view = self
     }
     
     // MARK: - SETUP
@@ -88,7 +99,7 @@ class FavoritListController: UIViewController {
 }
 
 extension FavoritListController: UITableViewDataSource, UITableViewDelegate {
-        
+    
     func getEmptyStateCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewFavorit.dequeueReusableCell(withIdentifier: "EmptyStateCustom", for: indexPath) as! EmptyStateCustom
         cell.selectionStyle = .none
@@ -100,16 +111,34 @@ extension FavoritListController: UITableViewDataSource, UITableViewDelegate {
     
     func getVideoListCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewFavorit.dequeueReusableCell(withIdentifier: "VideoListCell", for: indexPath) as! VideoListCell
+        let video = presenter.favVideos[indexPath.row]
+        cell.setToFav()
+        cell.onFavTapped = {[unowned self] in
+            presenter.removeFromFav(video: video)
+        }
+        cell.onThumbTapped = {[unowned self] in
+            let controller = VideoPlayerController(video: video)
+            SheetViewController.show(controller, onParent: self, sizes: [.fullscreen])
+        }
+        cell.setData(video: video)
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if presenter.favVideos.count != 0 {
+            return presenter.favVideos.count
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return getVideoListCell(indexPath)
+        if presenter.favVideos.count != 0 {
+            return getVideoListCell(indexPath)
+        } else {
+            return getEmptyStateCell(indexPath)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -117,10 +146,26 @@ extension FavoritListController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-        
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
+    }
+}
+
+extension FavoritListController: FavoritListProtocol {
+    func showLoading() {
+        isLoading = true
+    }
+    
+    func showData() {
+        isLoading = false
+        tableViewFavorit.reloadData()
+    }
+    
+    func showError(error: any Error) {
+        isLoading = false
+        print(error.localizedDescription)
     }
 }

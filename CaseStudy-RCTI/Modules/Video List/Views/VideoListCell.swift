@@ -40,6 +40,7 @@ class VideoListCell: UITableViewCell {
         imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
+        imageView.addTapAction(self, action: #selector(onTapThumb))
         imageView.heightAnchor.constraint(equalToConstant: 184).isActive = true
         return imageView
     }()
@@ -136,6 +137,7 @@ class VideoListCell: UITableViewCell {
     
     // MARK: - VARIABLE DECLARATION
     var onFavTapped: (() -> Void)?
+    var onThumbTapped: (() -> Void)?
   
     // MARK: - INIT
     
@@ -198,8 +200,19 @@ class VideoListCell: UITableViewCell {
         labelDuration.text = video.duration
     }
     
+    public func setToFav() {
+        imageViewFav.image = UIImage(systemName: "heart.fill")?.withTintColor(.red, renderingMode: .alwaysOriginal)
+    }
+    
+    public func setToUnfav() {
+        imageViewFav.image = UIImage(systemName: "heart")?.withTintColor(.red, renderingMode: .alwaysOriginal)
+    }
+    
     // MARK: - ACTION
     @objc func onTapFav(_ sender: Any) {
         self.onFavTapped?()
+    }
+    @objc func onTapThumb(_ sender: Any) {
+        self.onThumbTapped?()
     }
 }

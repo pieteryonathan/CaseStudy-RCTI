@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		979AF0FF2C2DC0260013CB77 /* FavoritListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979AF0FE2C2DC0260013CB77 /* FavoritListPresenter.swift */; };
 		97AE9CCE2C2C3FBD000A4B09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9CCD2C2C3FBD000A4B09 /* AppDelegate.swift */; };
 		97AE9CD02C2C3FBD000A4B09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9CCF2C2C3FBD000A4B09 /* SceneDelegate.swift */; };
 		97AE9CD22C2C3FBD000A4B09 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9CD12C2C3FBD000A4B09 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		49C82CB4131762418C0C7EB2 /* Pods_CaseStudy_RCTI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaseStudy_RCTI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8622DF5B9DDADA84C5AE6054 /* Pods-CaseStudy-RCTI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaseStudy-RCTI.debug.xcconfig"; path = "Target Support Files/Pods-CaseStudy-RCTI/Pods-CaseStudy-RCTI.debug.xcconfig"; sourceTree = "<group>"; };
+		979AF0FE2C2DC0260013CB77 /* FavoritListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritListPresenter.swift; sourceTree = "<group>"; };
 		97AE9CCA2C2C3FBD000A4B09 /* CaseStudy-RCTI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CaseStudy-RCTI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97AE9CCD2C2C3FBD000A4B09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97AE9CCF2C2C3FBD000A4B09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				97AE9D052C2C4CB9000A4B09 /* FavoritListController.swift */,
+				979AF0FE2C2DC0260013CB77 /* FavoritListPresenter.swift */,
 			);
 			path = "Favorit List";
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				97AE9D102C2C5DF8000A4B09 /* UIImageViewExtension.swift in Sources */,
 				97AE9CD22C2C3FBD000A4B09 /* ViewController.swift in Sources */,
 				97AE9CCE2C2C3FBD000A4B09 /* AppDelegate.swift in Sources */,
+				979AF0FF2C2DC0260013CB77 /* FavoritListPresenter.swift in Sources */,
 				97AE9CF92C2C443F000A4B09 /* MainTabBarRCTIController.swift in Sources */,
 				97AE9CF02C2C42A6000A4B09 /* UIColorExtension.swift in Sources */,
 				97AE9CF22C2C42B1000A4B09 /* UIViewExtensions.swift in Sources */,

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		455787A551216FEBA05B6BBA /* Pods_CaseStudy_RCTI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C66191AD5BD48651574EAE /* Pods_CaseStudy_RCTI.framework */; };
 		97AE9CCE2C2C3FBD000A4B09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9CCD2C2C3FBD000A4B09 /* AppDelegate.swift */; };
 		97AE9CD02C2C3FBD000A4B09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9CCF2C2C3FBD000A4B09 /* SceneDelegate.swift */; };
 		97AE9CD22C2C3FBD000A4B09 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9CD12C2C3FBD000A4B09 /* ViewController.swift */; };
@@ -37,7 +36,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		14C66191AD5BD48651574EAE /* Pods_CaseStudy_RCTI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaseStudy_RCTI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97AE9CCA2C2C3FBD000A4B09 /* CaseStudy-RCTI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CaseStudy-RCTI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97AE9CCD2C2C3FBD000A4B09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97AE9CCF2C2C3FBD000A4B09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,8 +64,6 @@
 		97AE9D112C2C6A94000A4B09 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		97AE9D142C2C8472000A4B09 /* VideoPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerController.swift; sourceTree = "<group>"; };
 		97AE9D182C2C8870000A4B09 /* SheetViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewControllerExtensions.swift; sourceTree = "<group>"; };
-		9A18739928203095C90C1048 /* Pods-CaseStudy-RCTI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaseStudy-RCTI.release.xcconfig"; path = "Target Support Files/Pods-CaseStudy-RCTI/Pods-CaseStudy-RCTI.release.xcconfig"; sourceTree = "<group>"; };
-		CE9819657F445FEF837B0A34 /* Pods-CaseStudy-RCTI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaseStudy-RCTI.debug.xcconfig"; path = "Target Support Files/Pods-CaseStudy-RCTI/Pods-CaseStudy-RCTI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				455787A551216FEBA05B6BBA /* Pods_CaseStudy_RCTI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +83,6 @@
 				97AE9CCC2C2C3FBD000A4B09 /* CaseStudy-RCTI */,
 				97AE9CCB2C2C3FBD000A4B09 /* Products */,
 				FAF635F880699F2E58A914B2 /* Pods */,
-				C8C7CE94D546F004374B60E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -230,19 +224,9 @@
 			path = "Video player";
 			sourceTree = "<group>";
 		};
-		C8C7CE94D546F004374B60E4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				14C66191AD5BD48651574EAE /* Pods_CaseStudy_RCTI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		FAF635F880699F2E58A914B2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CE9819657F445FEF837B0A34 /* Pods-CaseStudy-RCTI.debug.xcconfig */,
-				9A18739928203095C90C1048 /* Pods-CaseStudy-RCTI.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -254,11 +238,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97AE9CDE2C2C3FBE000A4B09 /* Build configuration list for PBXNativeTarget "CaseStudy-RCTI" */;
 			buildPhases = (
-				B28D738B8406BEC99AD3118E /* [CP] Check Pods Manifest.lock */,
 				97AE9CC62C2C3FBD000A4B09 /* Sources */,
 				97AE9CC72C2C3FBD000A4B09 /* Frameworks */,
 				97AE9CC82C2C3FBD000A4B09 /* Resources */,
-				C5647E7DBD14B5BC8FF73DD6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -313,48 +295,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		B28D738B8406BEC99AD3118E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CaseStudy-RCTI-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C5647E7DBD14B5BC8FF73DD6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CaseStudy-RCTI/Pods-CaseStudy-RCTI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CaseStudy-RCTI/Pods-CaseStudy-RCTI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CaseStudy-RCTI/Pods-CaseStudy-RCTI-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		97AE9CC62C2C3FBD000A4B09 /* Sources */ = {
@@ -523,7 +463,6 @@
 		};
 		97AE9CDF2C2C3FBE000A4B09 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE9819657F445FEF837B0A34 /* Pods-CaseStudy-RCTI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -552,7 +491,6 @@
 		};
 		97AE9CE02C2C3FBE000A4B09 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A18739928203095C90C1048 /* Pods-CaseStudy-RCTI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

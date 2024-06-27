@@ -27,6 +27,7 @@ class VideoPlayerController: UIViewController {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.heightAnchor.constraint(equalToConstant: 184).isActive = true
+        view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
         return view
     }()
     
@@ -85,7 +86,7 @@ class VideoPlayerController: UIViewController {
         let label = UILabel()
         label.text = "\(video.views?.formattedViews() ?? "") views"
         label.textColor = .darkGray
-        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.font = .systemFont(ofSize: 10, weight: .regular)
         return label
     }()
     
@@ -93,7 +94,7 @@ class VideoPlayerController: UIViewController {
         let label = UILabel()
         label.text = video.uploadTime ?? ""
         label.textColor = .darkGray
-        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.font = .systemFont(ofSize: 10, weight: .regular)
         return label
     }()
     
@@ -174,145 +175,122 @@ class VideoPlayerController: UIViewController {
     }
     
     // MARK: - VARIABLE DECLARATION
-    var video: Video
-    private var player: AVPlayer?
-    private var playerViewController: AVPlayerViewController?
-    
-    lazy var activityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.color = .white
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.hidesWhenStopped = true
-        return indicator
-    }()
-    
-    // MARK: - INIT
-    
-    init(video: Video) {
-        self.video = video
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - OVERRIDE
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        var video: Video
+        private var player: AVPlayer?
+        private var playerViewController: AVPlayerViewController?
         
-        view.backgroundColor = .white
-        setupView()
-        setupPlayer()
-    }
-    
-    // MARK: - SETUP
-    
-    private func setupPlayer() {
-        video.convertHTTPToHTTPS()
-        guard let videoURL = URL(string: video.videoURL ?? "") else { return }
-        player = AVPlayer(url: videoURL)
-        playerViewController = AVPlayerViewController()
-        playerViewController?.player = player
-        playerViewController?.delegate = self
+        lazy var activityIndicator: UIActivityIndicatorView = {
+            let indicator = UIActivityIndicatorView(style: .large)
+            indicator.color = .white
+            indicator.translatesAutoresizingMaskIntoConstraints = false
+            indicator.hidesWhenStopped = true
+            return indicator
+        }()
         
-        addChild(playerViewController!)
-        viewPlayer.addSubview(playerViewController!.view)
-        playerViewController!.view.frame = viewPlayer.bounds
-        playerViewController!.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            playerViewController!.view.leadingAnchor.constraint(equalTo: viewPlayer.leadingAnchor),
-            playerViewController!.view.trailingAnchor.constraint(equalTo: viewPlayer.trailingAnchor),
-            playerViewController!.view.topAnchor.constraint(equalTo: viewPlayer.topAnchor),
-            playerViewController!.view.bottomAnchor.constraint(equalTo: viewPlayer.bottomAnchor)
-        ])
-        playerViewController!.didMove(toParent: self)
+        // MARK: - INIT
         
-        viewPlayer.addSubview(activityIndicator)
-        NSLayoutConstraint.activate([
-            activityIndicator.centerXAnchor.constraint(equalTo: viewPlayer.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: viewPlayer.centerYAnchor)
-        ])
+        init(video: Video) {
+            self.video = video
+            super.init(nibName: nil, bundle: nil)
+        }
         
-        player?.addObserver(self, forKeyPath: "status", options: [.new, .initial], context: nil)
-        player?.currentItem?.addObserver(self, forKeyPath: "isPlaybackLikelyToKeepUp", options: [.new, .initial], context: nil)
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
         
-        player?.play()
-    }
-    
-    private func setupView() {
-        containerView.addArrangedSubViews(views: [viewPlayer, scrollView, StackViewHelpers.getSpacerV()])
-        stackViewScroll.addArrangedSubViews(views: [stackViewContent, stackViewDesc, StackViewHelpers.getSpacerV()])
+        // MARK: - OVERRIDE
         
-        stackViewContent.addArrangedSubViews(views: [labelTitle, stackViewInfo, stackViewAuthor])
-        
-        stackViewInfo.addArrangedSubViews(views: [labelViews, labelUpload, StackViewHelpers.getSpacerH()])
-        
-        stackViewAuthor.addArrangedSubViews(views: [labelAuthor, getDot(), labelSubs, StackViewHelpers.getSpacerH()])
-        
-        stackViewDesc.addArrangedSubViews(views: [containerViewDesc])
-        containerViewDesc.addArrangedSubViews(views: [labelTitleDesc, labelDesc])
-    }
-    
-    private func refreshLayout() {
-        // Refresh or update the layout here
-        view.setNeedsLayout()
-        view.layoutIfNeeded()
-        
-        // If you have specific subviews to layout, you can call the same methods on those subviews
-        viewPlayer.setNeedsLayout()
-        viewPlayer.layoutIfNeeded()
-        scrollView.setNeedsLayout()
-        scrollView.layoutIfNeeded()
-        containerView.setNeedsLayout()
-        containerView.layoutIfNeeded()
-        stackViewScroll.setNeedsLayout()
-        stackViewScroll.layoutIfNeeded()
-        stackViewContent.setNeedsLayout()
-        stackViewContent.layoutIfNeeded()
-        stackViewDesc.setNeedsLayout()
-        stackViewDesc.layoutIfNeeded()
-        containerViewDesc.setNeedsLayout()
-        containerViewDesc.layoutIfNeeded()
-    }
-    
-    // MARK: - OBSERVER METHOD
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        guard let player = player else { return }
-        
-        switch keyPath {
-        case "status":
-            if player.status == .readyToPlay {
-                activityIndicator.stopAnimating()
-            } else if player.status == .failed {
-                // Handle error
-                activityIndicator.stopAnimating()
-            }
+        override func viewDidLoad() {
+            super.viewDidLoad()
             
-        case "isPlaybackLikelyToKeepUp":
-            if player.currentItem?.isPlaybackLikelyToKeepUp == true {
-                activityIndicator.stopAnimating()
-            } else {
-                activityIndicator.startAnimating()
-            }
+            view.backgroundColor = .white
+            setupView()
+            setupPlayer()
+        }
+        
+        // MARK: - SETUP
+        
+        private func setupPlayer() {
+            video.convertHTTPToHTTPS()
+            guard let videoURL = URL(string: video.videoURL ?? "") else { return }
+            player = AVPlayer(url: videoURL)
+            playerViewController = AVPlayerViewController()
+            playerViewController?.player = player
+            playerViewController?.delegate = self
             
-        default:
-            break
+            addChild(playerViewController!)
+            viewPlayer.addSubview(playerViewController!.view)
+            playerViewController!.view.frame = viewPlayer.bounds
+            playerViewController!.view.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                playerViewController!.view.leadingAnchor.constraint(equalTo: viewPlayer.leadingAnchor),
+                playerViewController!.view.trailingAnchor.constraint(equalTo: viewPlayer.trailingAnchor),
+                playerViewController!.view.topAnchor.constraint(equalTo: viewPlayer.topAnchor),
+                playerViewController!.view.bottomAnchor.constraint(equalTo: viewPlayer.bottomAnchor)
+            ])
+            playerViewController!.didMove(toParent: self)
+            
+            viewPlayer.addSubview(activityIndicator)
+            NSLayoutConstraint.activate([
+                activityIndicator.centerXAnchor.constraint(equalTo: viewPlayer.centerXAnchor),
+                activityIndicator.centerYAnchor.constraint(equalTo: viewPlayer.centerYAnchor)
+            ])
+            
+            player?.addObserver(self, forKeyPath: "status", options: [.new, .initial], context: nil)
+            player?.currentItem?.addObserver(self, forKeyPath: "isPlaybackLikelyToKeepUp", options: [.new, .initial], context: nil)
+            
+            player?.play()
+        }
+        
+        private func setupView() {
+            containerView.addArrangedSubViews(views: [viewPlayer, scrollView, StackViewHelpers.getSpacerV()])
+            stackViewScroll.addArrangedSubViews(views: [stackViewContent, stackViewDesc, StackViewHelpers.getSpacerV()])
+            
+            stackViewContent.addArrangedSubViews(views: [labelTitle, stackViewInfo, stackViewAuthor])
+            stackViewContent.setCustomSpacing(8, after: labelTitle)
+            stackViewInfo.addArrangedSubViews(views: [labelViews, labelUpload, StackViewHelpers.getSpacerH()])
+            
+            stackViewAuthor.addArrangedSubViews(views: [labelAuthor, getDot(), labelSubs, StackViewHelpers.getSpacerH()])
+            
+            stackViewDesc.addArrangedSubViews(views: [containerViewDesc])
+            containerViewDesc.addArrangedSubViews(views: [labelTitleDesc, labelDesc])
+        }
+    
+        // MARK: - OBSERVER METHOD
+        
+        override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+            guard let player = player else { return }
+            
+            switch keyPath {
+            case "status":
+                if player.status == .readyToPlay {
+                    activityIndicator.stopAnimating()
+                } else if player.status == .failed {
+                    activityIndicator.stopAnimating()
+                }
+                
+            case "isPlaybackLikelyToKeepUp":
+                if player.currentItem?.isPlaybackLikelyToKeepUp == true {
+                    activityIndicator.stopAnimating()
+                } else {
+                    activityIndicator.startAnimating()
+                }
+                
+            default:
+                break
+            }
+        }
+        
+        // MARK: - DEINIT
+        
+        deinit {
+            player?.removeObserver(self, forKeyPath: "status")
+            player?.currentItem?.removeObserver(self, forKeyPath: "isPlaybackLikelyToKeepUp")
         }
     }
-    
-    // MARK: - DEINIT
-    
-    deinit {
-        player?.removeObserver(self, forKeyPath: "status")
-        player?.currentItem?.removeObserver(self, forKeyPath: "isPlaybackLikelyToKeepUp")
-    }
-}
 
-extension VideoPlayerController: AVPlayerViewControllerDelegate {
-    func playerViewController(_ playerViewController: AVPlayerViewController, willEndFullScreenPresentationWithAnimationCoordinator coordinator: any UIViewControllerTransitionCoordinator) {
-        self.refreshLayout()
+    extension VideoPlayerController: AVPlayerViewControllerDelegate {
+        func playerViewController(_ playerViewController: AVPlayerViewController, willEndFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+            
+        }
     }
-}

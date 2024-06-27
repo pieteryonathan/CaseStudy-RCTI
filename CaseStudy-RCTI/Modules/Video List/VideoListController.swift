@@ -48,7 +48,7 @@ class VideoListController: UIViewController {
         return view
     }()
     
-    public lazy var tableViewPromo: UITableView = {
+    public lazy var tableViewVideo: UITableView = {
         let view = UITableView()
         view.delegate = self
         view.backgroundColor = .white
@@ -82,29 +82,29 @@ class VideoListController: UIViewController {
     // MARK: - SETUP
     
     private func setupView() {
-        containerView.addArrangedSubViews(views: [stackViewHeader, viewLoading , tableViewPromo])
+        containerView.addArrangedSubViews(views: [stackViewHeader, viewLoading , tableViewVideo])
         stackViewHeader.addArrangedSubViews(views: [labelHeader])
     }
     
     private func setStateLoading() {
         viewLoading.isHidden = !isLoading
-        tableViewPromo.isHidden = isLoading
+        tableViewVideo.isHidden = isLoading
     }
 }
 
 extension VideoListController: UITableViewDataSource, UITableViewDelegate {
         
     func getEmptyStateCell(_ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableViewPromo.dequeueReusableCell(withIdentifier: "EmptyStateCustom", for: indexPath) as! EmptyStateCustom
+        let cell = tableViewVideo.dequeueReusableCell(withIdentifier: "EmptyStateCustom", for: indexPath) as! EmptyStateCustom
         cell.selectionStyle = .none
         cell.isUserInteractionEnabled = false
         cell.setData(image: UIImage(named: "ils_empty_box")!, title: "Oops, No Videos Found!", subTitle: "It looks like there are no videos available right now.\nPlease check back later.")
-        cell.containerView.heightAnchor.constraint(equalToConstant: tableViewPromo.frame.size.height).isActive = true
+        cell.containerView.heightAnchor.constraint(equalToConstant: tableViewVideo.frame.size.height).isActive = true
         return cell
     }
     
     func getVideoListCell(_ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableViewPromo.dequeueReusableCell(withIdentifier: "VideoListCell", for: indexPath) as! VideoListCell
+        let cell = tableViewVideo.dequeueReusableCell(withIdentifier: "VideoListCell", for: indexPath) as! VideoListCell
         cell.selectionStyle = .none
         cell.setData(video: presenter.videos[indexPath.row])
         return cell
@@ -125,6 +125,7 @@ extension VideoListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = VideoPlayerController(video: presenter.videos[indexPath.row])
         SheetViewController.show(controller, onParent: self, sizes: [.fullscreen])
+        
     }
         
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -139,7 +140,7 @@ extension VideoListController: VideoListProtocol {
     
     func showData() {
         self.isLoading = false
-        tableViewPromo.reloadData()
+        tableViewVideo.reloadData()
     }
     
     func showError(error: any Error) {

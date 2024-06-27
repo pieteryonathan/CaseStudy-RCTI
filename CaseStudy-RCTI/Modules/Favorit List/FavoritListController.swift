@@ -47,7 +47,7 @@ class FavoritListController: UIViewController {
         return view
     }()
     
-     public lazy var tableViewPromo: UITableView = {
+     public lazy var tableViewFavorit: UITableView = {
         let view = UITableView()
         view.delegate = self
         view.backgroundColor = .white
@@ -55,6 +55,7 @@ class FavoritListController: UIViewController {
         view.separatorStyle = .none
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(EmptyStateCustom.self, forCellReuseIdentifier: "EmptyStateCustom")
+        view.register(VideoListCell.self, forCellReuseIdentifier: "VideoListCell")
         return view
     }()
     
@@ -76,24 +77,30 @@ class FavoritListController: UIViewController {
     // MARK: - SETUP
     
     private func setupView() {
-        containerView.addArrangedSubViews(views: [stackViewHeader, viewLoading , tableViewPromo])
+        containerView.addArrangedSubViews(views: [stackViewHeader, viewLoading , tableViewFavorit])
         stackViewHeader.addArrangedSubViews(views: [labelHeader])
     }
     
     private func setStateLoading() {
         viewLoading.isHidden = !isLoading
-        tableViewPromo.isHidden = isLoading
+        tableViewFavorit.isHidden = isLoading
     }
 }
 
 extension FavoritListController: UITableViewDataSource, UITableViewDelegate {
         
     func getEmptyStateCell(_ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableViewPromo.dequeueReusableCell(withIdentifier: "EmptyStateCustom", for: indexPath) as! EmptyStateCustom
+        let cell = tableViewFavorit.dequeueReusableCell(withIdentifier: "EmptyStateCustom", for: indexPath) as! EmptyStateCustom
         cell.selectionStyle = .none
         cell.isUserInteractionEnabled = false
         cell.setData(image: UIImage(named: "ils_empty_fav")!, title: "No Favorites Yet!", subTitle: "Add items to your favorites to see them in this list")
-        cell.containerView.heightAnchor.constraint(equalToConstant: tableViewPromo.frame.size.height).isActive = true
+        cell.containerView.heightAnchor.constraint(equalToConstant: tableViewFavorit.frame.size.height).isActive = true
+        return cell
+    }
+    
+    func getVideoListCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableViewFavorit.dequeueReusableCell(withIdentifier: "VideoListCell", for: indexPath) as! VideoListCell
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -102,7 +109,7 @@ extension FavoritListController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return getEmptyStateCell(indexPath)
+        return getVideoListCell(indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

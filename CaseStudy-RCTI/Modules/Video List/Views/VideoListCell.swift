@@ -195,7 +195,8 @@ class VideoListCell: UITableViewCell {
         imageViewThumb.afImage(video.thumbnailURL ?? "", placeholder: UIImage(named: "placeholder_video"))
         labelTitle.text = video.title ?? ""
         labelAuthor.text = video.author ?? ""
-        labelViews.text = video.views?.formattedStringToViewsCurrency() ?? ""
+        labelViews.text = video.views?.formattedViews() ?? ""
         labelUpload.text = video.uploadTime ?? ""
+        labelDuration.text = video.duration
     }
 }

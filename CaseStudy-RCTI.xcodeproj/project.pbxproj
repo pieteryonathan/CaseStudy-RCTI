@@ -34,7 +34,6 @@
 		97AE9D122C2C6A94000A4B09 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9D112C2C6A94000A4B09 /* StringExtensions.swift */; };
 		97AE9D152C2C8472000A4B09 /* VideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9D142C2C8472000A4B09 /* VideoPlayerController.swift */; };
 		97AE9D192C2C8870000A4B09 /* SheetViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9D182C2C8870000A4B09 /* SheetViewControllerExtensions.swift */; };
-		97AE9D1B2C2C9572000A4B09 /* CustomAVPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9D1A2C2C9572000A4B09 /* CustomAVPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +66,6 @@
 		97AE9D112C2C6A94000A4B09 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		97AE9D142C2C8472000A4B09 /* VideoPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerController.swift; sourceTree = "<group>"; };
 		97AE9D182C2C8870000A4B09 /* SheetViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewControllerExtensions.swift; sourceTree = "<group>"; };
-		97AE9D1A2C2C9572000A4B09 /* CustomAVPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAVPlayerViewController.swift; sourceTree = "<group>"; };
 		9A18739928203095C90C1048 /* Pods-CaseStudy-RCTI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaseStudy-RCTI.release.xcconfig"; path = "Target Support Files/Pods-CaseStudy-RCTI/Pods-CaseStudy-RCTI.release.xcconfig"; sourceTree = "<group>"; };
 		CE9819657F445FEF837B0A34 /* Pods-CaseStudy-RCTI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaseStudy-RCTI.debug.xcconfig"; path = "Target Support Files/Pods-CaseStudy-RCTI/Pods-CaseStudy-RCTI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				97AE9D142C2C8472000A4B09 /* VideoPlayerController.swift */,
-				97AE9D1A2C2C9572000A4B09 /* CustomAVPlayerViewController.swift */,
 			);
 			path = "Video player";
 			sourceTree = "<group>";
@@ -369,7 +366,6 @@
 				97AE9CF42C2C42B6000A4B09 /* UIViewControllerExtensions.swift in Sources */,
 				97AE9CF72C2C440E000A4B09 /* MainTabBarController.swift in Sources */,
 				97AE9CEA2C2C41B7000A4B09 /* Button.swift in Sources */,
-				97AE9D1B2C2C9572000A4B09 /* CustomAVPlayerViewController.swift in Sources */,
 				97AE9CE22C2C40DE000A4B09 /* HomepageViewController.swift in Sources */,
 				97AE9D192C2C8870000A4B09 /* SheetViewControllerExtensions.swift in Sources */,
 				97AE9D122C2C6A94000A4B09 /* StringExtensions.swift in Sources */,

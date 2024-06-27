@@ -8,6 +8,7 @@
 import UIKit
 import AVFoundation
 import AVKit
+import RealmSwift
 
 class VideoPlayerController: UIViewController {
     
@@ -158,7 +159,7 @@ class VideoPlayerController: UIViewController {
     
     private lazy var labelDesc: UILabel = {
         let label = UILabel()
-        label.text = video.description ?? ""
+        label.text = video.videoDescription ?? ""
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textColor = .black

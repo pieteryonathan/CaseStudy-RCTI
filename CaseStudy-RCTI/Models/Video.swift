@@ -6,32 +6,35 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct VideoResponse: Codable {
     let videos: [Video]
 }
 
-struct Video: Codable {
-    let id: String?
-    let title: String?
-    let thumbnailURL: String?
-    let duration: String?
-    let uploadTime: String?
-    let views: String?
-    let author: String?
-    var videoURL: String?
-    let description, subscriber: String?
-    let isLive: Bool?
-    
+class Video: Object, Codable {
+    @Persisted var id: String?
+    @Persisted var title: String?
+    @Persisted var thumbnailURL: String?
+    @Persisted var duration: String?
+    @Persisted var uploadTime: String?
+    @Persisted var views: String?
+    @Persisted var author: String?
+    @Persisted var videoURL: String?
+    @Persisted var videoDescription: String?
+    @Persisted var subscriber: String?
+    @Persisted var isLive: Bool?
+
     enum CodingKeys: String, CodingKey {
         case id, title
         case thumbnailURL = "thumbnailUrl"
         case duration, uploadTime, views, author
         case videoURL = "videoUrl"
-        case description, subscriber, isLive
+        case videoDescription = "description"
+        case subscriber, isLive
     }
     
-    mutating func convertHTTPToHTTPS() {
+    func convertHTTPToHTTPS() {
         if var videoURL = self.videoURL, videoURL.lowercased().hasPrefix("http://") {
             videoURL.replaceSubrange(videoURL.startIndex..<videoURL.index(videoURL.startIndex, offsetBy: 4), with: "https")
             self.videoURL = videoURL

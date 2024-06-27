@@ -3,27 +3,33 @@ PODS:
   - AlamofireImage (4.3.0):
     - Alamofire (~> 5.8)
   - FittedSheets (2.6.1)
-  - VersaPlayer (3.0.2)
+  - Realm (10.51.0):
+    - Realm/Headers (= 10.51.0)
+  - Realm/Headers (10.51.0)
+  - RealmSwift (10.51.0):
+    - Realm (= 10.51.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - FittedSheets
-  - VersaPlayer
+  - RealmSwift
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
     - FittedSheets
-    - VersaPlayer
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
   AlamofireImage: 843953fa97bee5f561cf05d83abd759e590b068d
   FittedSheets: 37e35f105c531f3845075f1788dd8517a35315c4
-  VersaPlayer: 0e9a0ea7da786729ffb377dbd17b34641a8265e4
+  Realm: 7e75a684c16aca7c6a5db9c70caebf37f07dcee5
+  RealmSwift: 35bdffb8a504659d1b3e3f45b624e93ac0ec89e3
 
-PODFILE CHECKSUM: db0edcbaa4627ea5751d042b079f3cc07507793b
+PODFILE CHECKSUM: 3457ffc17f2173b63f233562fa81c1aed73a736c
 
 COCOAPODS: 1.15.2

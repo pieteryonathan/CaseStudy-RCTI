@@ -107,6 +107,9 @@ extension VideoListController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableViewVideo.dequeueReusableCell(withIdentifier: "VideoListCell", for: indexPath) as! VideoListCell
         cell.selectionStyle = .none
         cell.setData(video: presenter.videos[indexPath.row])
+        cell.onFavTapped = {[unowned self] in
+            
+        }
         return cell
     }
     
@@ -123,8 +126,9 @@ extension VideoListController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = VideoPlayerController(video: presenter.videos[indexPath.row])
-        SheetViewController.show(controller, onParent: self, sizes: [.fullscreen])
+        tableView.deselectRow(at: indexPath, animated: true)
+//        let controller = VideoPlayerController(video: presenter.videos[indexPath.row])
+//        SheetViewController.show(controller, onParent: self, sizes: [.fullscreen])
         
     }
         

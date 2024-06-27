@@ -2,4 +2,5 @@ ${PODS_ROOT}/Target Support Files/Pods-CaseStudy-RCTI/Pods-CaseStudy-RCTI-framew
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework
 ${BUILT_PRODUCTS_DIR}/FittedSheets/FittedSheets.framework
-${BUILT_PRODUCTS_DIR}/VersaPlayer/VersaPlayer.framework
+${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
+${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework

@@ -39,18 +39,20 @@ class VideoListCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
         imageView.heightAnchor.constraint(equalToConstant: 184).isActive = true
         return imageView
     }()
     
-    private lazy var favBackgroundView: UIView = {
+    lazy var favBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .white.withAlphaComponent(0.7)
         view.layer.cornerRadius = 12
         view.clipsToBounds = true
+        view.isUserInteractionEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        view.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 32).isActive = true
         return view
     }()
     
@@ -60,6 +62,9 @@ class VideoListCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
         imageView.image = UIImage(systemName: "heart")?.withTintColor(.red, renderingMode: .alwaysOriginal)
+        imageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        imageView.addTapAction(self, action: #selector(onTapFav))
         return imageView
     }()
     
@@ -130,17 +135,8 @@ class VideoListCell: UITableViewCell {
     }
     
     // MARK: - VARIABLE DECLARATION
-    var shimmeringAnimatedItems: [UIView] {
-            [
-                imageViewThumb,
-                labelDuration,
-                labelTitle,
-                labelAuthor,
-                labelUpload,
-                labelViews
-            ]
-        }
-
+    var onFavTapped: (() -> Void)?
+  
     // MARK: - INIT
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -191,6 +187,8 @@ class VideoListCell: UITableViewCell {
         ])
     }
     
+    // MARK: - DATA
+    
     public func setData(video: Video) {
         imageViewThumb.afImage(video.thumbnailURL ?? "", placeholder: UIImage(named: "placeholder_video"))
         labelTitle.text = video.title ?? ""
@@ -198,5 +196,10 @@ class VideoListCell: UITableViewCell {
         labelViews.text = video.views?.formattedViews() ?? ""
         labelUpload.text = video.uploadTime ?? ""
         labelDuration.text = video.duration
+    }
+    
+    // MARK: - ACTION
+    @objc func onTapFav(_ sender: Any) {
+        self.onFavTapped?()
     }
 }

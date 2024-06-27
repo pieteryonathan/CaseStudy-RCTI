@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9770A1162C2DDE6B00325153 /* VideoListControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9770A1152C2DDE6B00325153 /* VideoListControllerTest.swift */; };
+		9770A1182C2DE08400325153 /* VideoListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9770A1172C2DE08400325153 /* VideoListPresenterTest.swift */; };
+		9770A11B2C2DE98600325153 /* FavoritListControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9770A11A2C2DE98600325153 /* FavoritListControllerTest.swift */; };
+		9770A11D2C2DE9E800325153 /* FavoritListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9770A11C2C2DE9E800325153 /* FavoritListPresenterTest.swift */; };
 		979AF0FF2C2DC0260013CB77 /* FavoritListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979AF0FE2C2DC0260013CB77 /* FavoritListPresenter.swift */; };
 		97AE9CCE2C2C3FBD000A4B09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9CCD2C2C3FBD000A4B09 /* AppDelegate.swift */; };
 		97AE9CD02C2C3FBD000A4B09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9CCF2C2C3FBD000A4B09 /* SceneDelegate.swift */; };
@@ -37,9 +41,24 @@
 		D84854299631281C4523C586 /* Pods_CaseStudy_RCTI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C82CB4131762418C0C7EB2 /* Pods_CaseStudy_RCTI.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9770A10F2C2DDE4800325153 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97AE9CC22C2C3FBD000A4B09 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97AE9CC92C2C3FBD000A4B09;
+			remoteInfo = "CaseStudy-RCTI";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		49C82CB4131762418C0C7EB2 /* Pods_CaseStudy_RCTI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaseStudy_RCTI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8622DF5B9DDADA84C5AE6054 /* Pods-CaseStudy-RCTI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaseStudy-RCTI.debug.xcconfig"; path = "Target Support Files/Pods-CaseStudy-RCTI/Pods-CaseStudy-RCTI.debug.xcconfig"; sourceTree = "<group>"; };
+		9770A10B2C2DDE4700325153 /* CaseStudy-RCTITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CaseStudy-RCTITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9770A1152C2DDE6B00325153 /* VideoListControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListControllerTest.swift; sourceTree = "<group>"; };
+		9770A1172C2DE08400325153 /* VideoListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListPresenterTest.swift; sourceTree = "<group>"; };
+		9770A11A2C2DE98600325153 /* FavoritListControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritListControllerTest.swift; sourceTree = "<group>"; };
+		9770A11C2C2DE9E800325153 /* FavoritListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritListPresenterTest.swift; sourceTree = "<group>"; };
 		979AF0FE2C2DC0260013CB77 /* FavoritListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritListPresenter.swift; sourceTree = "<group>"; };
 		97AE9CCA2C2C3FBD000A4B09 /* CaseStudy-RCTI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CaseStudy-RCTI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97AE9CCD2C2C3FBD000A4B09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +92,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9770A1082C2DDE4700325153 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		97AE9CC72C2C3FBD000A4B09 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -84,10 +110,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9770A10C2C2DDE4800325153 /* CaseStudy-RCTITests */ = {
+			isa = PBXGroup;
+			children = (
+				9770A1192C2DE94600325153 /* Favorit List */,
+				9770A1142C2DDE5600325153 /* Video List */,
+			);
+			path = "CaseStudy-RCTITests";
+			sourceTree = "<group>";
+		};
+		9770A1142C2DDE5600325153 /* Video List */ = {
+			isa = PBXGroup;
+			children = (
+				9770A1152C2DDE6B00325153 /* VideoListControllerTest.swift */,
+				9770A1172C2DE08400325153 /* VideoListPresenterTest.swift */,
+			);
+			path = "Video List";
+			sourceTree = "<group>";
+		};
+		9770A1192C2DE94600325153 /* Favorit List */ = {
+			isa = PBXGroup;
+			children = (
+				9770A11A2C2DE98600325153 /* FavoritListControllerTest.swift */,
+				9770A11C2C2DE9E800325153 /* FavoritListPresenterTest.swift */,
+			);
+			path = "Favorit List";
+			sourceTree = "<group>";
+		};
 		97AE9CC12C2C3FBD000A4B09 = {
 			isa = PBXGroup;
 			children = (
 				97AE9CCC2C2C3FBD000A4B09 /* CaseStudy-RCTI */,
+				9770A10C2C2DDE4800325153 /* CaseStudy-RCTITests */,
 				97AE9CCB2C2C3FBD000A4B09 /* Products */,
 				FAF635F880699F2E58A914B2 /* Pods */,
 				FB3FE0324E7C5A51D90D3E83 /* Frameworks */,
@@ -98,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				97AE9CCA2C2C3FBD000A4B09 /* CaseStudy-RCTI.app */,
+				9770A10B2C2DDE4700325153 /* CaseStudy-RCTITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -253,6 +308,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9770A10A2C2DDE4700325153 /* CaseStudy-RCTITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9770A1132C2DDE4800325153 /* Build configuration list for PBXNativeTarget "CaseStudy-RCTITests" */;
+			buildPhases = (
+				9770A1072C2DDE4700325153 /* Sources */,
+				9770A1082C2DDE4700325153 /* Frameworks */,
+				9770A1092C2DDE4700325153 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9770A1102C2DDE4800325153 /* PBXTargetDependency */,
+			);
+			name = "CaseStudy-RCTITests";
+			productName = "CaseStudy-RCTITests";
+			productReference = 9770A10B2C2DDE4700325153 /* CaseStudy-RCTITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		97AE9CC92C2C3FBD000A4B09 /* CaseStudy-RCTI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97AE9CDE2C2C3FBE000A4B09 /* Build configuration list for PBXNativeTarget "CaseStudy-RCTI" */;
@@ -282,6 +355,10 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					9770A10A2C2DDE4700325153 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 97AE9CC92C2C3FBD000A4B09;
+					};
 					97AE9CC92C2C3FBD000A4B09 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -301,11 +378,19 @@
 			projectRoot = "";
 			targets = (
 				97AE9CC92C2C3FBD000A4B09 /* CaseStudy-RCTI */,
+				9770A10A2C2DDE4700325153 /* CaseStudy-RCTITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9770A1092C2DDE4700325153 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		97AE9CC82C2C3FBD000A4B09 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -360,6 +445,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9770A1072C2DDE4700325153 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9770A11D2C2DE9E800325153 /* FavoritListPresenterTest.swift in Sources */,
+				9770A1182C2DE08400325153 /* VideoListPresenterTest.swift in Sources */,
+				9770A11B2C2DE98600325153 /* FavoritListControllerTest.swift in Sources */,
+				9770A1162C2DDE6B00325153 /* VideoListControllerTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		97AE9CC62C2C3FBD000A4B09 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -394,6 +490,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		9770A1102C2DDE4800325153 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 97AE9CC92C2C3FBD000A4B09 /* CaseStudy-RCTI */;
+			targetProxy = 9770A10F2C2DDE4800325153 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		97AE9CD82C2C3FBE000A4B09 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -406,6 +510,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9770A1112C2DDE4800325153 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 98QK38C4QU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pieteryonathan.CaseStudy-RCTITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CaseStudy-RCTI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CaseStudy-RCTI";
+			};
+			name = Debug;
+		};
+		9770A1122C2DDE4800325153 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 98QK38C4QU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pieteryonathan.CaseStudy-RCTITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CaseStudy-RCTI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CaseStudy-RCTI";
+			};
+			name = Release;
+		};
 		97AE9CDC2C2C3FBE000A4B09 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -586,6 +726,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9770A1132C2DDE4800325153 /* Build configuration list for PBXNativeTarget "CaseStudy-RCTITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9770A1112C2DDE4800325153 /* Debug */,
+				9770A1122C2DDE4800325153 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		97AE9CC52C2C3FBD000A4B09 /* Build configuration list for PBXProject "CaseStudy-RCTI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

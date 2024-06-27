@@ -66,7 +66,7 @@ class FavoritListController: UIViewController {
     var isLoading = true { didSet {
         setStateLoading()
     }}
-    let presenter = FavoritListPresenter()
+    var presenter = FavoritListPresenter()
     
     // MARK: - OVERRIDE
     

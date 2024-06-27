@@ -65,7 +65,7 @@ class VideoListController: UIViewController {
     var isLoading = true { didSet {
         setStateLoading()
     }}
-    let presenter = VideoListPresenter()
+    var presenter = VideoListPresenter()
     
     // MARK: - OVERRIDE
     

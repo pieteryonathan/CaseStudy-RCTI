@@ -177,8 +177,8 @@ class VideoPlayerController: UIViewController {
     
     // MARK: - VARIABLE DECLARATION
     var video: Video
-    private var player: AVPlayer?
-    private var playerViewController: AVPlayerViewController?
+    var player: AVPlayer?
+    var playerViewController: AVPlayerViewController?
     
     lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)

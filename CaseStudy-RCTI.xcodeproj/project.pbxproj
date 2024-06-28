@@ -17,7 +17,6 @@
 		97AE9CD22C2C3FBD000A4B09 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9CD12C2C3FBD000A4B09 /* ViewController.swift */; };
 		97AE9CD72C2C3FBE000A4B09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97AE9CD62C2C3FBE000A4B09 /* Assets.xcassets */; };
 		97AE9CDA2C2C3FBE000A4B09 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 97AE9CD92C2C3FBE000A4B09 /* Base */; };
-		97AE9CE22C2C40DE000A4B09 /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9CE12C2C40DE000A4B09 /* HomepageViewController.swift */; };
 		97AE9CE62C2C4136000A4B09 /* UIApllicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9CE52C2C4136000A4B09 /* UIApllicationExtensions.swift */; };
 		97AE9CEA2C2C41B7000A4B09 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9CE92C2C41B7000A4B09 /* Button.swift */; };
 		97AE9CEC2C2C424D000A4B09 /* NSLayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE9CEB2C2C424D000A4B09 /* NSLayoutConstraintExtensions.swift */; };
@@ -67,7 +66,6 @@
 		97AE9CD62C2C3FBE000A4B09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97AE9CD92C2C3FBE000A4B09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97AE9CDB2C2C3FBE000A4B09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97AE9CE12C2C40DE000A4B09 /* HomepageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
 		97AE9CE52C2C4136000A4B09 /* UIApllicationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApllicationExtensions.swift; sourceTree = "<group>"; };
 		97AE9CE92C2C41B7000A4B09 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		97AE9CEB2C2C424D000A4B09 /* NSLayoutConstraintExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtensions.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				97AE9CF82C2C443F000A4B09 /* MainTabBarRCTIController.swift */,
-				97AE9CE12C2C40DE000A4B09 /* HomepageViewController.swift */,
 				97AE9CFB2C2C4825000A4B09 /* Reuseable Components */,
 				97AE9D042C2C4CA4000A4B09 /* Favorit List */,
 				97AE9CFA2C2C481C000A4B09 /* Video List */,
@@ -465,7 +462,6 @@
 				97AE9CF42C2C42B6000A4B09 /* UIViewControllerExtensions.swift in Sources */,
 				97AE9CF72C2C440E000A4B09 /* MainTabBarController.swift in Sources */,
 				97AE9CEA2C2C41B7000A4B09 /* Button.swift in Sources */,
-				97AE9CE22C2C40DE000A4B09 /* HomepageViewController.swift in Sources */,
 				97AE9D192C2C8870000A4B09 /* SheetViewControllerExtensions.swift in Sources */,
 				97AE9D122C2C6A94000A4B09 /* StringExtensions.swift in Sources */,
 				97AE9D032C2C4A04000A4B09 /* StackViewHelpers.swift in Sources */,

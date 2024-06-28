@@ -1,9 +1,8 @@
 //
 //  UIViewExtensions.swift
-//  CaseStudy-BNI
+//  CaseStudy-RCTI
 //
-//  Created by Pieter Yonathan on 12/06/24.
-//
+//  Created by Pieter Yonathan on 26/06/24.
 
 import Foundation
 import UIKit
